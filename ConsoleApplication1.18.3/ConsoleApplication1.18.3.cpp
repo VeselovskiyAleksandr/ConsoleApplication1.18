@@ -5,15 +5,6 @@
 #include <vector>
 using namespace std;
 
-vector <int> add(vector<int> array, int val) {
-	vector<int> newarray(array.size() + 1);
-	for (int i = 0; i < array.size(); i++) {
-		newarray[i] = array[i];
-		newarray[array.size()] = val;
-	}
-	return newarray;
-}
-
 vector <int> locationAscendingOrder(vector <int> array) {
 	int i;
 	for ( i = 0; i< array.size(); i++) {	
@@ -34,30 +25,27 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	int  elementValue=0, n=5, count=5;
 	vector <int> array(n);
-	cout << "\nВведите элементы массива " << "\n" << "(-1 - для вывода 5-ого по возрастанию элемента массива, ";
-	cout << "\n -2 - для завершения работы программы.)\n";
-	
+	cout << "\nВведите первые 5 элементов массива " << "\n";
 		for (int i = 0; i < 5; i++) {
 			cin >> array[i];
 		}
-do{
-		cout << "\nВведите элементы массива \n";
+cout << "\nВведите элементы массива \n" << "(-1 - для вывода 5-ого по возрастанию элемента массива, ";
+	cout << "\n -2 - для завершения работы программы.)\n"; 
+do{	
 		cin >> elementValue;
- if (elementValue == -1) {
-		
+        if (elementValue == -1) {	
 			array = locationAscendingOrder(array);
-			
 	for (int i = 0; i < array.size(); i++) {
 				cout << array[i] << " ";
 			}
-			cout << "\n Пятый элемент массива: " << array[4];
+			cout << "\n Пятый элемент массива: " << array[4]<<"\n";
 		}
 		else if (elementValue == -2) {
 			cout << "\n Программа заканчивает работу.";
 			break;
 		}	
-         if (elementValue != -1 && elementValue != -2) {
-	         array = add(array, elementValue);
+		else  {
+			array.push_back(elementValue);
            }
      } while (elementValue != -2);
 }
